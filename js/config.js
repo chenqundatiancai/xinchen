@@ -86,6 +86,7 @@ window.LOVE_CONFIG = {
   music: {
     autoplay: true,
     tracks: [
+      { title: "Flower Dance 风格曲", artist: "钢琴", src: "assets/music/flower-dance-style.wav" },
       { title: "黄昏", artist: "环境音", src: "assets/music/dusk-loop.wav" }
     ]
   },
