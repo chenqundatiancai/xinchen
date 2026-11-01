@@ -1,0 +1,121 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+<title>欣陈宇宙 · 入口</title>
+<style>
+  :root{--ink:#3a1a14;--card:#fff8ee}
+  *{box-sizing:border-box}
+  html,body{height:100%;margin:0}
+  body{
+    display:grid;place-items:center;font-family:"PingFang SC","Microsoft YaHei",system-ui,sans-serif;
+    background:
+      radial-gradient(46% 34% at 78% 16%, rgba(255,214,150,.55), transparent 68%),
+      radial-gradient(90% 40% at 50% 101%, rgba(255,196,120,.65), transparent 70%),
+      linear-gradient(180deg,#231026 0%,#3f1b35 22%,#7a3140 44%,#b85447 62%,#e88a58 80%,#ffd9a6 100%);
+    overflow:hidden;
+  }
+  .glow{position:fixed;inset:0;pointer-events:none;
+    background:radial-gradient(30% 26% at 82% 14%,rgba(255,240,200,.55),transparent 70%)}
+  .card{
+    position:relative;width:min(380px,88vw);padding:34px 30px 26px;border-radius:26px;text-align:center;
+    background:linear-gradient(180deg,rgba(255,249,238,.97),rgba(255,234,210,.95));
+    border:1px solid rgba(255,255,255,.85);
+    box-shadow:0 40px 90px -30px rgba(90,30,10,.55),0 0 0 1px rgba(255,255,255,.4) inset;
+    color:var(--ink);
+    animation:in .6s cubic-bezier(.2,.9,.25,1.1) both;
+  }
+  @keyframes in{from{opacity:0;transform:translateY(18px) scale(.97)}to{opacity:1;transform:none}}
+  .heart{font-size:30px;line-height:1;filter:drop-shadow(0 6px 14px rgba(220,90,60,.4))}
+  h1{margin:12px 0 4px;font-size:22px;letter-spacing:.08em;color:#7a2a16}
+  p.sub{margin:0 0 22px;font-size:12px;letter-spacing:.18em;color:rgba(120,60,40,.6)}
+  input{
+    width:100%;padding:14px 16px;border-radius:14px;font-size:16px;letter-spacing:.3em;text-align:center;
+    border:1px solid rgba(150,90,60,.3);background:#fffdf9;color:#4a2418;outline:none;
+    transition:border-color .2s,box-shadow .2s;
+  }
+  input:focus{border-color:#e08a5a;box-shadow:0 0 0 4px rgba(224,138,90,.18)}
+  button{
+    width:100%;margin-top:14px;padding:14px;border:0;border-radius:14px;cursor:pointer;
+    font-size:15px;font-weight:800;letter-spacing:.12em;color:#fff;
+    background:linear-gradient(135deg,#f08a4b,#e2553f);
+    box-shadow:0 18px 34px -16px rgba(226,85,63,.9);transition:transform .2s,filter .2s;
+  }
+  button:hover{transform:translateY(-1px);filter:brightness(1.05)}
+  button:disabled{opacity:.6;transform:none;cursor:default}
+  .err{margin-top:12px;min-height:18px;font-size:12px;color:#c0392b}
+  .foot{margin-top:18px;font-size:11px;letter-spacing:.14em;color:rgba(120,60,40,.45)}
+</style>
+</head>
+<body>
+  <div class="glow"></div>
+  <main class="card">
+    <div class="heart">💗</div>
+    <h1>我们的欣陈宇宙</h1>
+    <p class="sub">ONLY FOR US · 请输入密码</p>
+    <input id="pwd" type="password" inputmode="numeric" autocomplete="current-password" placeholder="····" autofocus />
+    <button id="go">进 入</button>
+    <div class="err" id="err"></div>
+    <div class="foot">只有我们两个人的小宇宙</div>
+  </main>
+<script src="js/supabase-config.js"></script>
+<script src="js/vendor/supabase.js"></script>
+<script>
+(function () {
+  var pwd = document.getElementById('pwd');
+  var btn = document.getElementById('go');
+  var err = document.getElementById('err');
+
+  function go() {
+    var v = pwd.value.trim();
+    if (!v) { err.textContent = '请输入密码'; return; }
+
+    /* 云端模式：走 Supabase 账号密码 */
+    var cfg = window.SUPABASE_CONFIG || {};
+    if (cfg.url && cfg.anonKey && window.supabase) {
+      btn.disabled = true; err.textContent = '';
+      var sb = window.supabase.createClient(cfg.url, cfg.anonKey, { auth: { persistSession: true } });
+      sb.auth.signInWithPassword({ email: cfg.authEmail || ('us@' + (location.hostname || 'xinchen')), password: v })
+        .then(function (res) {
+          if (res.error) throw res.error;
+          location.href = 'index.html';
+        })
+        .catch(function (e) {
+          btn.disabled = false;
+          err.textContent = (e && e.message) ? e.message : '密码不对';
+        });
+      return;
+    }
+
+    btn.disabled = true; err.textContent = '';
+    fetch('/api/login', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ password: v })
+    }).then(function (r) {
+      return r.json().then(function (d) { return { ok: r.ok, d: d }; });
+    }).then(function (res) {
+      if (res.ok && res.d.ok) {
+        try { if (res.d.device) localStorage.setItem('love.device', res.d.device); } catch (e) {}
+        location.href = '/';
+      } else {
+        err.textContent = (res.d && res.d.error) || '密码不对';
+        pwd.value = ''; pwd.focus(); btn.disabled = false;
+      }
+    }).catch(function () {
+      err.textContent = '连不上服务，检查一下是不是断了';
+      btn.disabled = false;
+    });
+  }
+
+  btn.onclick = go;
+  pwd.addEventListener('keydown', function (e) { if (e.key === 'Enter') go(); });
+
+  fetch('/api/session').then(function (r) { return r.json(); }).then(function (d) {
+    if (d && d.authed) location.href = '/';
+  }).catch(function () {});
+})();
+</script>
+</body>
+</html>
