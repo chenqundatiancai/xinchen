@@ -1,0 +1,343 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+<meta name="theme-color" content="#ff5f9e" />
+<title>欣陈宇宙 · 只属于我们两个人</title>
+<meta name="description" content="我们的故事从这一天开始，从第一次，到以后的无数次。" />
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Cpath d='M16 28S3 19.5 3 11.5A6.5 6.5 0 0 1 16 8a6.5 6.5 0 0 1 13 3.5C29 19.5 16 28 16 28z' fill='%23ff2d7e'/%3E%3C/svg%3E" />
+<link rel="stylesheet" href="css/style.css" />
+</head>
+<body class="is-locked">
+
+<div class="grain" aria-hidden="true"></div>
+
+<!-- ============ 场景一：开屏 ============ -->
+<section class="scene scene--intro is-active" id="sceneIntro" aria-label="开屏">
+  <div class="intro__photo" id="introPhoto">
+    <img id="introPhotoImg" alt="" decoding="async" />
+  </div>
+  <div class="intro__gradient" aria-hidden="true"></div>
+  <div class="intro__bokeh" aria-hidden="true">
+    <span style="--x:12%;--y:24%;--s:120px;--d:0s"></span>
+    <span style="--x:84%;--y:18%;--s:180px;--d:-3s"></span>
+    <span style="--x:72%;--y:78%;--s:150px;--d:-6s"></span>
+    <span style="--x:22%;--y:82%;--s:110px;--d:-2s"></span>
+    <span style="--x:50%;--y:50%;--s:260px;--d:-8s"></span>
+  </div>
+  <div class="intro__hearts" aria-hidden="true" id="introHearts"></div>
+
+  <div class="intro__content" id="introContent">
+    <p class="intro__kicker"><span>XIN</span><i></i><span>CHEN</span><i></i><span>UNIVERSE</span></p>
+    <button class="enter-btn" id="enterBtn" type="button">
+      <span class="enter-btn__glow" aria-hidden="true"></span>
+      <span class="enter-btn__corner enter-btn__corner--tl" aria-hidden="true"></span>
+      <span class="enter-btn__corner enter-btn__corner--tr" aria-hidden="true"></span>
+      <span class="enter-btn__corner enter-btn__corner--bl" aria-hidden="true"></span>
+      <span class="enter-btn__corner enter-btn__corner--br" aria-hidden="true"></span>
+      <span class="enter-btn__ring" aria-hidden="true"></span>
+      <span class="enter-btn__sheen" aria-hidden="true"></span>
+      <span class="enter-btn__label">进入欣陈宇宙</span>
+      <span class="enter-btn__hint">点击，打开只属于我们的小宇宙</span>
+      <span class="enter-btn__dots" aria-hidden="true"><b></b><b></b><b></b></span>
+    </button>
+    <p class="intro__tip">仅此一份 · 为你而建</p>
+  </div>
+
+  <div class="heart-stage" id="heartStage"></div>
+
+  <p class="heart-hint" id="heartHint">再点一下 · 进入我们的宇宙<span class="heart-hint__bar"></span></p>
+
+  <footer class="intro__foot">
+    <span id="footDate">—</span>
+    <span class="intro__foot-dot"></span>
+    <span>Made with ♥ for 喻佳欣</span>
+  </footer>
+</section>
+
+<!-- ============ 场景二：星辰宇宙 ============ -->
+<section class="scene scene--universe" id="sceneUniverse" aria-label="我们的宇宙" aria-hidden="true">
+  <canvas class="starfield" id="starfield" aria-hidden="true"></canvas>
+  <div class="uni__photo" aria-hidden="true"></div>
+  <div class="dusk__moon" aria-hidden="true"></div>
+  <div class="dusk__clouds" aria-hidden="true">
+    <span style="left:-10%;top:16%;width:46vw;height:9vh;animation-delay:-8s"></span>
+    <span style="left:20%;top:30%;width:38vw;height:7vh;animation-delay:-30s;opacity:.7"></span>
+    <span style="left:55%;top:10%;width:52vw;height:8vh;animation-delay:-16s;opacity:.55"></span>
+    <span style="left:5%;top:48%;width:60vw;height:10vh;animation-delay:-44s;opacity:.45"></span>
+  </div>
+  <div class="dusk__city" aria-hidden="true"></div>
+  <div class="dusk__petals" id="petals" aria-hidden="true"></div>
+  <div class="uni__deco" aria-hidden="true">
+    <span class="deco deco--planet"></span>
+    <span class="deco deco--moon"></span>
+    <span class="deco deco--spark deco--spark1"></span>
+    <span class="deco deco--spark deco--spark2"></span>
+    <span class="deco deco--spark deco--spark3"></span>
+    <span class="deco deco--comet"></span>
+  </div>
+
+  <div class="uni__inner">
+    <div class="uni__grid" aria-hidden="true"></div>
+    <div class="hero">
+      <div class="hero__art">
+        <span class="hero__heart" aria-hidden="true">
+          <svg viewBox="0 0 32 30"><path d="M16 29S1.5 19.8 1.5 11.2A7.2 7.2 0 0 1 16 7.4 7.2 7.2 0 0 1 30.5 11.2C30.5 19.8 16 29 16 29z"/></svg>
+        </span>
+        <div class="hero__chibi" id="chibi"><svg class="chibi__svg" viewBox="60 62 296 300" role="img" aria-label="喻佳欣和陈群的Q版形象">
+          <defs>
+            <linearGradient id="skin" x1="0" y1="0" x2="0" y2="1">
+              <stop offset="0" stop-color="#fff1e8"/><stop offset="1" stop-color="#ffdccc"/>
+            </linearGradient>
+            <linearGradient id="skinPale" x1="0" y1="0" x2="0" y2="1">
+              <stop offset="0" stop-color="#fff6f1"/><stop offset="1" stop-color="#ffe4d8"/>
+            </linearGradient>
+            <linearGradient id="hairHer" x1="0" y1="0" x2="0" y2="1">
+              <stop offset="0" stop-color="#241f28"/><stop offset=".5" stop-color="#141018"/><stop offset="1" stop-color="#0b080d"/>
+            </linearGradient>
+            <linearGradient id="hairHim" x1="0" y1="0" x2="0" y2="1">
+              <stop offset="0" stop-color="#2a2328"/><stop offset="1" stop-color="#120e11"/>
+            </linearGradient>
+            <linearGradient id="coatWhite" x1="0" y1="0" x2=".4" y2="1">
+              <stop offset="0" stop-color="#fffdfa"/><stop offset="1" stop-color="#f6e9e2"/>
+            </linearGradient>
+            <linearGradient id="jacketNavy" x1="0" y1="0" x2=".4" y2="1">
+              <stop offset="0" stop-color="#2f3f68"/><stop offset="1" stop-color="#172140"/>
+            </linearGradient>
+          </defs>
+
+          <ellipse cx="216" cy="332" rx="122" ry="14" fill="rgba(255,60,60,.16)"/>
+
+          <!-- 她的长发（身体后面） -->
+          <g class="chibi__fig chibi__fig--her">
+            <path d="M264 96c-42 0-64 28-64 72 0 46-10 90-12 132-1 22 14 36 36 36h80c22 0 37-14 36-36-2-42-12-86-12-132 0-44-22-72-64-72z"
+                  fill="url(#hairHer)" stroke="#100a10" stroke-width="5" stroke-linejoin="round"/>
+            <path d="M232 120c-10 34-14 78-10 126" fill="none" stroke="rgba(255,255,255,.10)" stroke-width="3" stroke-linecap="round"/>
+            <path d="M296 120c10 34 14 78 10 126" fill="none" stroke="rgba(255,255,255,.08)" stroke-width="3" stroke-linecap="round"/>
+          </g>
+
+          <!-- 他的身体：深蓝外套 + 浅蓝条纹 + 红色胸标 + 帽兜 -->
+          <g class="chibi__fig chibi__fig--him">
+            <rect x="88" y="200" width="160" height="112" rx="56" fill="url(#jacketNavy)" stroke="#100a10" stroke-width="5"/>
+            <path d="M98 262c18-11 37-15 55-13M96 280c16-9 33-13 49-12" fill="none" stroke="#a8dcf0" stroke-width="7" stroke-linecap="round" opacity=".95"/>
+            <circle cx="176" cy="256" r="9" fill="#d13b3b" stroke="#100a10" stroke-width="3"/>
+            <path d="M173 252l6 8M179 252l-6 8" stroke="rgba(255,255,255,.75)" stroke-width="2" stroke-linecap="round"/>
+            <path d="M120 202c14-10 62-10 76 0-6 12-70 12-76 0z" fill="#454a56" stroke="#100a10" stroke-width="4"/>
+            <path d="M156 206v18" stroke="rgba(255,255,255,.5)" stroke-width="4" stroke-linecap="round"/>
+          </g>
+
+          <!-- 她的身体：奶白外套 -->
+          <g class="chibi__fig chibi__fig--her">
+            <rect x="196" y="196" width="154" height="116" rx="58" fill="url(#coatWhite)" stroke="#100a10" stroke-width="5"/>
+            <path d="M264 206v94" stroke="rgba(80,40,50,.13)" stroke-width="4"/>
+            <circle cx="250" cy="240" r="4" fill="rgba(80,40,50,.22)"/>
+            <circle cx="278" cy="256" r="4" fill="rgba(80,40,50,.22)"/>
+            <path d="M222 206c10 10 26 14 42 14s32-4 42-14" fill="none" stroke="rgba(80,40,50,.12)" stroke-width="4" stroke-linecap="round"/>
+          </g>
+
+          <!-- 她的两缕前发 -->
+          <g class="chibi__fig chibi__fig--her">
+            <path d="M230 126c-12 30-16 72-12 116 3 22 16 26 22 12 2-38 2-88 8-116z" fill="url(#hairHer)" stroke="#100a10" stroke-width="4" stroke-linejoin="round"/>
+            <path d="M300 126c12 30 16 72 12 116-3 22-16 26-22 12-2-38-2-88-8-116z" fill="url(#hairHer)" stroke="#100a10" stroke-width="4" stroke-linejoin="round"/>
+          </g>
+
+          <!-- 拥抱的手臂 -->
+          <g class="chibi__arms">
+            <path d="M126 238c42-26 100-32 158-22" fill="none" stroke="#100a10" stroke-width="34" stroke-linecap="round"/>
+            <path d="M126 238c42-26 100-32 158-22" fill="none" stroke="#2f3f68" stroke-width="24" stroke-linecap="round"/>
+            <circle cx="292" cy="216" r="15" fill="url(#skin)" stroke="#100a10" stroke-width="5"/>
+            <path d="M332 258c-50 18-118 18-170 4" fill="none" stroke="#100a10" stroke-width="32" stroke-linecap="round"/>
+            <path d="M332 258c-50 18-118 18-170 4" fill="none" stroke="#fffdfa" stroke-width="22" stroke-linecap="round"/>
+            <circle cx="156" cy="260" r="14" fill="url(#skin)" stroke="#100a10" stroke-width="5"/>
+          </g>
+
+          <!-- 他的头 -->
+          <g class="chibi__fig chibi__fig--him">
+            <rect x="148" y="176" width="20" height="22" rx="9" fill="url(#skin)" stroke="#100a10" stroke-width="4"/>
+            <path d="M158 108c-27 0-44 19-44 45 0 26 19 44 44 44s44-18 44-44c0-26-17-45-44-45z"
+                  fill="url(#skin)" stroke="#100a10" stroke-width="5"/>
+            <!-- 短发：圆滑的盖头，右侧略偏分 -->
+            <path d="M114 144c-1-27 20-44 44-44 26 0 44 17 45 43-6-10-13-16-22-18-9 7-21 10-34 9-9-1-17 2-23 7-4 1-8 1-10 3z"
+                  fill="url(#hairHim)" stroke="#100a10" stroke-width="5" stroke-linejoin="round"/>
+            <path d="M113 152c-1 8 1 14 4 18-4-7-5-13-4-18z" fill="url(#hairHim)" stroke="#100a10" stroke-width="4"/>
+            <path d="M203 152c1 8-1 14-4 18 4-7 5-13 4-18z" fill="url(#hairHim)" stroke="#100a10" stroke-width="4"/>
+            <!-- 细圆框眼镜 -->
+            <g fill="rgba(255,255,255,.22)" stroke="#6d5b46" stroke-width="3.2">
+              <circle cx="140" cy="160" r="15"/>
+              <circle cx="180" cy="160" r="15"/>
+            </g>
+            <path d="M155 160h10" stroke="#6d5b46" stroke-width="3.2"/>
+            <path d="M125 155l-8-3M195 155l8-3" stroke="#6d5b46" stroke-width="3.2" stroke-linecap="round"/>
+            <g class="chibi__face">
+              <ellipse cx="140" cy="161" rx="4.4" ry="5.6" fill="#1a1014"/>
+              <ellipse cx="180" cy="161" rx="4.4" ry="5.6" fill="#1a1014"/>
+              <circle cx="141.4" cy="159" r="1.6" fill="#fff"/>
+              <circle cx="181.4" cy="159" r="1.6" fill="#fff"/>
+              <ellipse cx="127" cy="176" rx="8" ry="4.2" fill="#ff9a90" opacity=".38"/>
+              <ellipse cx="193" cy="176" rx="8" ry="4.2" fill="#ff9a90" opacity=".38"/>
+              <path d="M152 180c4 4.4 9 4.4 13 0" fill="none" stroke="#1a1014" stroke-width="3.4" stroke-linecap="round"/>
+            </g>
+          </g>
+
+          <!-- 她的头 -->
+          <g class="chibi__fig chibi__fig--her">
+            <rect x="254" y="174" width="20" height="24" rx="9" fill="url(#skinPale)" stroke="#100a10" stroke-width="4"/>
+            <path d="M264 104c-25 0-42 17-42 43 0 22 13 37 30 41 5 1 9 1 14 0 17-4 28-19 28-41 0-26-15-43-30-43z"
+                  fill="url(#skinPale)" stroke="#100a10" stroke-width="5"/>
+            <!-- 中分刘海：两侧弧形往下包住脸 -->
+            <path d="M264 103c-19 2-33 13-39 32-3 9-4 18-3 27 3-16 8-28 16-36 6-6 13-10 21-12 2 3 5 5 9 6z"
+                  fill="url(#hairHer)" stroke="#100a10" stroke-width="4" stroke-linejoin="round"/>
+            <path d="M264 103c19 2 33 13 39 32 3 9 4 18 3 27-3-16-8-28-16-36-6-6-13-10-21-12-2 3-5 5-9 6z"
+                  fill="url(#hairHer)" stroke="#100a10" stroke-width="4" stroke-linejoin="round"/>
+            <!-- 几缕碎发 -->
+            <path d="M232 120c-7 14-9 30-8 46" fill="none" stroke="rgba(24,16,26,.9)" stroke-width="2.6" stroke-linecap="round"/>
+            <path d="M296 122c6 13 8 27 7 42" fill="none" stroke="rgba(24,16,26,.9)" stroke-width="2.6" stroke-linecap="round"/>
+            <!-- 发夹 -->
+            <path d="M300 118l11-5M300 118l10 4" stroke="#f3e8ff" stroke-width="3" stroke-linecap="round"/>
+            <g class="chibi__face">
+              <ellipse cx="247" cy="154" rx="6.6" ry="8.2" fill="#171015"/>
+              <ellipse cx="281" cy="154" rx="6.6" ry="8.2" fill="#171015"/>
+              <path d="M239 147c5-3.5 11-3.5 16 0" fill="none" stroke="#171015" stroke-width="2.6" stroke-linecap="round"/>
+              <path d="M274 147c5-3.5 11-3.5 16 0" fill="none" stroke="#171015" stroke-width="2.6" stroke-linecap="round"/>
+              <circle cx="249.2" cy="151" r="2.1" fill="#fff"/>
+              <circle cx="283.2" cy="151" r="2.1" fill="#fff"/>
+              <ellipse cx="231" cy="169" rx="9" ry="5" fill="#ff8fa8" opacity=".5"/>
+              <ellipse cx="297" cy="169" rx="9" ry="5" fill="#ff8fa8" opacity=".5"/>
+              <path d="M259 171c3 3.4 7 3.4 10 0" fill="none" stroke="#171015" stroke-width="3" stroke-linecap="round"/>
+            </g>
+            <!-- 银项链 -->
+            <path d="M247 191q17 7 34 0" fill="none" stroke="#f7f3ff" stroke-width="4.5" stroke-linecap="round"/>
+            <circle cx="264" cy="198" r="3.8" fill="#eee8f8" stroke="#100a10" stroke-width="2.2"/>
+          </g>
+        </svg></div>
+        <div class="hero__tags">
+          <span class="hero__tag hero__tag--him" id="nameHim">陈群大王</span>
+          <span class="hero__tag hero__tag--her" id="nameHer">喻佳欣老大</span>
+        </div>
+      </div>
+
+      <div class="panel" id="panel">
+        <p class="panel__from">我们的故事从 <time id="startDateText">2023.05.20</time> 开始</p>
+        <h1 class="panel__title" id="panelTitle">我们的欣陈宇宙</h1>
+        <p class="panel__sub">从第一次，到以后的无数次</p>
+
+        <div class="timer" id="timer" role="timer" aria-label="在一起的时间">
+          <div class="timer__unit">
+            <span class="timer__num" id="tDays">0</span>
+            <span class="timer__label">天</span>
+          </div>
+          <span class="timer__colon" aria-hidden="true">:</span>
+          <div class="timer__unit">
+            <span class="timer__num" id="tHours">00</span>
+            <span class="timer__label">时</span>
+          </div>
+          <span class="timer__colon" aria-hidden="true">:</span>
+          <div class="timer__unit">
+            <span class="timer__num" id="tMins">00</span>
+            <span class="timer__label">分</span>
+          </div>
+          <span class="timer__colon" aria-hidden="true">:</span>
+          <div class="timer__unit">
+            <span class="timer__num" id="tSecs">00</span>
+            <span class="timer__label">秒</span>
+          </div>
+        </div>
+
+        <p class="panel__foot">这是我们 一起走过的 <strong id="footTimer">0天00时00分00秒</strong></p>
+        <span class="panel__bolt panel__bolt--tl" aria-hidden="true"></span>
+        <span class="panel__bolt panel__bolt--br" aria-hidden="true"></span>
+      </div>
+    </div>
+
+    <div class="settings" id="settings">
+      <button class="settings__btn" id="settingsBtn" type="button" aria-label="设置" aria-expanded="false">⚙</button>
+      <div class="settings__panel" id="settingsPanel" hidden>
+        <p class="settings__title">我们的设置</p>
+        <label class="settings__row">
+          <span>换背景图</span>
+          <input type="file" id="bgInput" accept="image/*" />
+        </label>
+        <button class="settings__act" id="bgReset" type="button">恢复默认背景</button>
+        <p class="settings__hint">换了之后，两个人在这里看到的都是同一张。</p>
+        <hr style="border:0;border-top:1px solid rgba(255,255,255,.1);margin:14px 0">
+        <p class="settings__title" style="margin-bottom:10px">备份</p>
+        <button class="settings__act" id="dataExport" type="button">导出全部回忆（.json）</button>
+        <label class="settings__act" style="display:block;text-align:center;cursor:pointer;margin-top:8px">
+          导入备份
+          <input type="file" id="dataImport" accept="application/json,.json" hidden>
+        </label>
+        <p class="settings__hint">清缓存 / 换设备前，先导出一份存起来。</p>
+        <p class="settings__hint" id="syncStatus" style="color:rgba(255,179,217,.75)">检查同步状态…</p>
+        <p class="settings__hint" id="storageInfo" style="color:rgba(255,226,205,.55)"></p>
+        <hr style="border:0;border-top:1px solid rgba(255,255,255,.1);margin:14px 0">
+        <p class="settings__title" style="margin-bottom:10px">账号</p>
+        <button class="settings__act" id="changePwd" type="button">修改密码</button>
+        <button class="settings__act" id="logoutBtn" type="button" style="margin-top:8px">退出登录</button>
+        <p class="settings__hint">密码只有你们两个人知道。</p>
+      </div>
+    </div>
+
+    <a class="scroll-cue" href="#us" id="scrollCue">
+      <span>往下滑 · 我们</span>
+      <i></i>
+    </a>
+  </div>
+
+  <section class="us" id="us">
+    <div class="us__head">
+      <span class="us__badge">CHAPTER 01</span>
+      <h2 class="us__title">我们</h2>
+      <p class="us__sub">六种方式，记录同一件小事：我很喜欢你</p>
+    </div>
+    <div class="us__grid" id="usGrid"></div>
+    <p class="us__end">今天也喜欢你 · 比昨天多一点</p>
+  </section>
+</section>
+
+<!-- 模块面板（日记 / 足迹 / 梦想 …） -->
+<div class="sheet" id="sheet" aria-hidden="true" role="dialog" aria-modal="true" aria-labelledby="sheetTitle">
+  <div class="sheet__mask" data-sheet-close></div>
+  <div class="sheet__panel">
+    <header class="sheet__head">
+      <span class="sheet__icon" id="sheetIcon">✧</span>
+      <h2 class="sheet__title" id="sheetTitle">板块</h2>
+      <button class="sheet__close" type="button" data-sheet-close aria-label="关闭">×</button>
+    </header>
+    <div class="sheet__body" id="sheetBody"></div>
+  </div>
+</div>
+
+<!-- 板块弹层 -->
+<div class="modal" id="modal" aria-hidden="true" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
+  <div class="modal__backdrop" data-close></div>
+  <div class="modal__card">
+    <button class="modal__close" type="button" data-close aria-label="关闭">×</button>
+    <span class="modal__icon" id="modalIcon">✧</span>
+    <h3 class="modal__title" id="modalTitle">即将开启</h3>
+    <p class="modal__text" id="modalText">这里很快就会被我们的故事填满。</p>
+    <button class="modal__btn" type="button" data-close>好呀</button>
+  </div>
+</div>
+
+<noscript><p style="position:fixed;inset:auto 0 24px;text-align:center;color:#fff;font:14px/1.6 sans-serif;z-index:99">这个小宇宙需要开启 JavaScript 才能亮起来哦。</p></noscript>
+
+<script src="js/config.js"></script>
+<script src="js/supabase-config.js"></script>
+<script src="js/vendor/supabase.js"></script>
+<script src="js/store.js"></script>
+<script src="js/modules.js"></script>
+<script src="js/china-map.js"></script>
+<script src="js/china-provinces.js"></script>
+<script src="js/modules/diary.js"></script>
+<script src="js/modules/dreams.js"></script>
+<script src="js/modules/food.js"></script>
+<script src="js/modules/trips.js"></script>
+<script src="js/modules/chill2.js"></script>
+<script src="js/modules/chill.js"></script>
+<script src="js/cn-divisions.js"></script>
+<script src="js/modules/lucky.js"></script>
+<script src="js/music.js"></script>
+<script src="js/app.js"></script>
+</body>
+</html>
